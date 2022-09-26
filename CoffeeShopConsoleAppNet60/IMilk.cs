@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShopConsoleAppNet60
 {
-    public interface mIMilk
+    public interface IMilk
     {
         public int mIMilk();
     }

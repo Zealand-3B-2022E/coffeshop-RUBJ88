@@ -6,37 +6,42 @@ using System.Threading.Tasks;
 
 namespace CoffeeShopConsoleAppNet60
 {
-    public class latte : Coffee
+    public class Latte : Coffee, IMilk
     {
-        public latte(int price, string strenght, int discound) : base(price, strenght, discound)
+        public Latte() : base()
         {
 
         }
 
-        private int _price;
-
-        public override int Price 
+        public Latte(int discount) : base(discount)
         {
-            get
-            {
-                return _price;
-            }
-            set 
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    _price = value;
-                }
-                else
-                {
-                    _price = 40;
-                }
-            }
+
         }
 
-        public override string Strenght()
+        public Latte(int discount, int milk) : base(discount, milk)
         {
-            return "weak";
+            milk = MlMilk();
+        }
+
+        public override int Price()
+        {
+            return 40 - base.Discount;
+        }
+
+
+        public override string CoffeeType()
+        {
+            return "Latte";
+        }
+
+        public override string Strength()
+        {
+            return "Weak";
+        }
+
+        public override int MlMilk()
+        {
+            return 200;
         }
     }
 }

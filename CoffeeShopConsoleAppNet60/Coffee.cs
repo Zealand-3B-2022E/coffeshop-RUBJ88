@@ -8,70 +8,53 @@ using System.Threading.Tasks;
 
 namespace CoffeeShopConsoleAppNet60
 {
-     internal abstract class Coffee
-    {
-        //private int _price;
-        //private string _strenght;
-        //private int _discount;
-
-        //public Coffee(int price, string strenght, int discound)
-        //{
-        //    _price = 0;
-        //    _strenght = strenght;
-        //    _discount = discound;
-        //}
-
-        //public virtual int Price
-        //{
-        //    get { return _price; }
-        //    set { _price = value; }
-        //}
-        //public string Strenght
-        //{
-        //    get { return _strenght; }
-        //    set { _strenght = value; }
-
-        //}
-
-        //public int Discount
-        //{
-        //    get { return _discount; }
-        //    set { _discount = value; }
-        //}
-      
-        
-
-
-      
-
-
-        //public override string ToString()
-        //{
-        //    return $"{nameof(_price)}: {_price}, {nameof(_strenght)}: {_strenght}, {nameof(_discount)}: {_discount}";
-        //}
-
-
-        private int _discount;
-
-
-        public int Discount
+     
+    
+        public abstract class Coffee : IMilk
         {
-            get { return _discount; }
-            set { _discount = value; }
-        }
 
-        public virtual int price()
+            private int _discount;
+            private int _milk;
+
+            protected int Discount { get; private set; }
+
+            protected Coffee()
+            {
+
+            }
+            protected Coffee(int discount)
+            {
+                if (discount > 5)
+                {
+                    throw new ArgumentException("Discount too high.");
+                }
+                _discount = discount;
+            }
+
+            protected Coffee(int discount, int milk)
+            {
+                _discount = discount;
+                _milk = MlMilk();
+            }
+
+            public virtual int Price()
+            {
+                return 20 - Discount;
+            }
+
+            public abstract string Strength();
+            public abstract string CoffeeType();
+
+            public abstract int MlMilk();
+
+            public override string ToString()
+            {
+                return $"Item: \t\t{this.CoffeeType()} \nStrength: \t{this.Strength()} \nPrice: \t\t{this.Price()},- \nMilk: \t\t{this.MlMilk()}ml";
+            }
+
+        public int mIMilk()
         {
-            return 20;
+            throw new NotImplementedException();
         }
-
-        public abstract string strenght();
-        
-        protected Coffee(int discount)
-        {
-            _discount = discount;
-        }
-
-
     }
 }

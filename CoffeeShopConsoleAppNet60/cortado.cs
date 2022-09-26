@@ -6,35 +6,53 @@ using System.Threading.Tasks;
 
 namespace CoffeeShopConsoleAppNet60
 {
-    public class cortado : Coffee
+    public class Cortado : Coffee, IMilk
     {
-        public cortado(int price, string strenght, int discound) : base(price, strenght, discound)
+        public Cortado() : base()
         {
-        }
-        private int _price;
 
-        public override int Price
-        {
-            get
-            {
-                return _price;
-            }
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    _price = value;
-                }
-                else
-                {
-                    _price = 25;
-                }
-
-            }
         }
-        public override string Strenght()
+
+        public Cortado(int discount) : base(discount)
         {
-            return "medium";
+
+        }
+
+        public Cortado(int discount, int milk) : base(discount, milk)
+        {
+
+        }
+
+        public override int Price()
+        {
+            return 25 - base.Discount;
+        }
+
+
+        public override string CoffeeType()
+        {
+            return "Cortado";
+        }
+
+        public override string Strength()
+        {
+            return "Medium";
+        }
+
+        public override int MlMilk()
+        {
+            return 40;
         }
     }
 }
+        
+
+            
+
+
+
+
+            
+
+    
+

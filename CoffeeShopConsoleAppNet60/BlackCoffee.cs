@@ -6,15 +6,32 @@ using System.Threading.Tasks;
 
 namespace CoffeeShopConsoleAppNet60
 {
-    public class BlackCoffee : Coffee
+    public  class BlackCoffee : Coffee, IMilk
     {
-        public BlackCoffee(int discount) : base(discount)
+        public BlackCoffee() : base()
         {
+
         }
 
-        public override string strenght()
+        public BlackCoffee(int discount) : base(discount)
         {
-            return "strong";
+
         }
+        public override string CoffeeType()
+        {
+            return "Black Coffee";
+        }
+
+        public override string Strength()
+        {
+            return "Strong";
+        }
+
+        public override int MlMilk()
+        {
+            return 0;
+        }
+
+
     }
 }

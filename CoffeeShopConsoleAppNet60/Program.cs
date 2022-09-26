@@ -5,23 +5,27 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        cortado cordado = new cortado();
-        latte latte = new latte();
-        BlackCoffee blackCoffee = new BlackCoffee();
+        Console.WriteLine("How high is a discount?");
+        string strDiscount = Console.ReadLine();
+        int discount = int.Parse(strDiscount);
+        Cortado cortado = new Cortado(discount);
+        Latte latte = new Latte(discount);
+        BlackCoffee blackCoffee = new BlackCoffee(discount);
 
+        List<Coffee> coffeeList = new List<Coffee>();
+        coffeeList.Add(blackCoffee);
+        coffeeList.Add(cortado);
+        coffeeList.Add(latte);
 
-
-        List<BlackCoffee> coffeeListt = new List<BlackCoffee>();
-        coffeeListt.Add(blackCoffee);
-        coffeeListt.Add(latte);
-        coffeeListt.Add(cordado);
-
-        foreach (Coffee in coffeeListt)
+        foreach (Coffee coffee in coffeeList)
         {
-            Console.WriteLine(coffee.strenght));
-            Console.WriteLine(coffee.price());
-       
+            
+            Console.WriteLine(coffee.Price);
         }
+
+
+      
+       
 
     }
 }
